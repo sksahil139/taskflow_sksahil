@@ -22,7 +22,10 @@ export async function apiClient<T>(
   const token = getStoredToken();
 
   const headers = new Headers(options.headers);
-  headers.set("Content-Type", "application/json");
+
+  if (!(options.body instanceof FormData)) {
+    headers.set("Content-Type", "application/json");
+  }
 
   if (token) {
     headers.set("Authorization", `Bearer ${token}`);
@@ -34,11 +37,18 @@ export async function apiClient<T>(
   });
 
   if (!response.ok) {
-    const errorBody = (await response.json()) as ApiErrorResponse;
+    let errorBody: ApiErrorResponse | null = null;
+
+    try {
+      errorBody = (await response.json()) as ApiErrorResponse;
+    } catch {
+      errorBody = null;
+    }
+
     throw new ApiError(
-      errorBody.error || "Request failed",
+      errorBody?.error || "Request failed",
       response.status,
-      errorBody.fields
+      errorBody?.fields
     );
   }
 
