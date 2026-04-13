@@ -1,6 +1,6 @@
 # TaskFlow
 
-A frontend-only implementation of the TaskFlow take-home assignment for the Zomato engineering recruitment process. The app covers the core flows from the brief: authentication, projects, project detail, task management, filtering, protected routes, responsive UI, and dark mode. It is built against a mocked API because the assignment explicitly allows frontend candidates to work from the provided mock API spec instead of building a real backend.
+A frontend-only implementation of the TaskFlow take-home assignment. The app covers the core flows from the brief: authentication, projects, project detail, task management, filtering, protected routes, responsive UI, and dark mode. It is built against a mocked API because the assignment explicitly allows frontend candidates to work from the provided mock API spec instead of building a real backend.
 
 ## 1. Overview
 
@@ -58,7 +58,7 @@ A few tradeoffs were intentional:
 ### Option A: Docker
 
 ```bash
-git clone https://github.com/sksahil139/taskflow_frontend_zomato_assignmatetask.git
+git clone https://github.com/sksahil139/taskflow_sksahil.git
 cd taskflow_frontend
 cp .env.example .env
 docker compose up --build
